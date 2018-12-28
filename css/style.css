@@ -6,7 +6,8 @@ main {
   margin-top: 20px; }
 
 form span {
-  margin-right: 10px; }
+  margin-right: 8px;
+  font-size: 1.1rem; }
 
 label {
   display: block; }
