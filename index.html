@@ -4,63 +4,64 @@
     <title>Dynamic Currency Conversion</title>
 </head>
 <body>
-    <form action="javascript:convert()">
-        <label for="amount">Enter amount to convert: </label>
-        <input type="text" id="amount"/>
-        <input type="submit" value="Submit"/>
-    </form>
-    
-    <div>
-        <!--<p>Amount to convert: <span id="ProductPrice">&pound;12.99</span></p>-->
-        <p>US buyers: <span id="USFX"></span></p>
-        <p>European buyers: <span id="EUFX"></span></p>
-    </div>
-    
+    <main>
+        <form action="javascript:convert()">
+            <label for="amount">Enter amount to convert: </label>
+            <input type="text" id="amount"/>
+            <input type="submit" value="Submit"/>
+        </form>
+        
+        <div>
+            <!--<p>Amount to convert: <span id="ProductPrice">&pound;12.99</span></p>-->
+            <p>US buyers: <span id="USFX"></span></p>
+            <p>European buyers: <span id="EUFX"></span></p>
+        </div>
+    </main>
     
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/money.js"></script>
     <script type="text/javascript">
-    // Load exchange rates data via AJAX:
-    function convert() {
-        $.getJSON(
-        	// NB: using Open Exchange Rates here, but you can use any source!
-            'https://openexchangerates.org/api/latest.json?app_id=49d329385faf437b9f7f75fbd5c5083d',
-            function(data) {
-                // Check money.js has finished loading:
-                if ( typeof fx !== "undefined" && fx.rates ) {
-                    fx.rates = data.rates;
-                    fx.base = data.base;
-                } else {
-                    // If not, apply to fxSetup global:
-                    var fxSetup = {
-                        rates : data.rates,
-                        base : data.base
+        // Load exchange rates data via AJAX:
+        function convert() {
+            $.getJSON(
+            	// NB: using Open Exchange Rates here, but you can use any source!
+                'https://openexchangerates.org/api/latest.json?app_id=49d329385faf437b9f7f75fbd5c5083d',
+                function(data) {
+                    // Check money.js has finished loading:
+                    if ( typeof fx !== "undefined" && fx.rates ) {
+                        fx.rates = data.rates;
+                        fx.base = data.base;
+                    } else {
+                        // If not, apply to fxSetup global:
+                        var fxSetup = {
+                            rates : data.rates,
+                            base : data.base
+                        }
                     }
-                }
-            //get the price of the product as a string
-            var stringToConvert = $('#amount').val();
+                //get the price of the product as a string
+                var stringToConvert = $('#amount').val();
+                    
+                //find all characters except £
+                var numb = stringToConvert.match(/[^£]/g);
+                //join the numbers together
+                numb = numb.join("");
+                            
+                //convert the string numbers into actual data type numbers
+                var numb = Number(numb);
                 
-            //find all characters except £
-            var numb = stringToConvert.match(/[^£]/g);
-            //join the numbers together
-            numb = numb.join("");
-                        
-            //convert the string numbers into actual data type numbers
-            var numb = Number(numb);
-            
-            //do the conversions
-            var conversionUS = fx.convert(numb, {from: 'GBP', to: 'USD'});
-            var conversionEU = fx.convert(numb, {from: 'GBP', to: 'EUR'});
-            //round them to two decimal places
-            var roundedConversionUS = parseFloat(Math.round(conversionUS * 100) / 100).toFixed(2);
-            var roundedConversionEU = parseFloat(Math.round(conversionEU * 100) / 100).toFixed(2);
-                        
-            //print the conversion onto the page
-            document.getElementById('USFX').innerHTML = '$' + roundedConversionUS;
-            document.getElementById('EUFX').innerHTML = '&euro;' + roundedConversionEU;
-            }
-        );
-    }
-</script>
+                //do the conversions
+                var conversionUS = fx.convert(numb, {from: 'GBP', to: 'USD'});
+                var conversionEU = fx.convert(numb, {from: 'GBP', to: 'EUR'});
+                //round them to two decimal places
+                var roundedConversionUS = parseFloat(Math.round(conversionUS * 100) / 100).toFixed(2);
+                var roundedConversionEU = parseFloat(Math.round(conversionEU * 100) / 100).toFixed(2);
+                            
+                //print the conversion onto the page
+                document.getElementById('USFX').innerHTML = '$' + roundedConversionUS;
+                document.getElementById('EUFX').innerHTML = '&euro;' + roundedConversionEU;
+                }
+            );
+        }
+    </script>
 </body>
 </html>
