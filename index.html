@@ -5,7 +5,7 @@
 </head>
 <body>
     <form action="javascript:convert()">
-        <input type="text" name="amount"/>
+        <input type="text" id="amount"/>
         <input type="submit" value="Submit"/>
     </form>
     
@@ -37,7 +37,7 @@
                     }
                 }
             //get the price of the product as a string
-            var stringToConvert = document.getElementById('ProductPrice').innerHTML;
+            var stringToConvert = $('#amount').val();
                 
             //find all characters except £
             var numb = stringToConvert.match(/[^£]/g);
