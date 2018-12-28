@@ -4,11 +4,18 @@
     <title>Dynamic Currency Conversion</title>
 </head>
 <body>
+    <form>
+        <input type="text" name="amount"/>
+        <input type="submit" value="Submit"/>
+    </form>
+    
     <div>
         <p>Amount to convert: <span id="ProductPrice">&pound;12.99</span></p>
         <p>US buyers: <span id="USFX"></span></p>
         <p>European buyers: <span id="EUFX"></span></p>
     </div>
+    
+    
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/money.js"></script>
     <script type="text/javascript">
@@ -33,7 +40,6 @@
             
         //find all characters except £
         var numb = stringToConvert.match(/[^£]/g);
-            alert(numb);
         //join the numbers together
         numb = numb.join("");
                     
