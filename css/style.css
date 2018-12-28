@@ -12,10 +12,12 @@ form span {
 label {
   display: block; }
 
-.conversions p {
-  margin: 0; }
-.conversions span {
-  display: block;
-  min-height: 30px; }
+.conversions {
+  margin-top: 20px; }
+  .conversions p {
+    margin: 0; }
+  .conversions span {
+    display: block;
+    min-height: 30px; }
 
 /*# sourceMappingURL=style.css.map */
