@@ -14,5 +14,8 @@ label {
 
 .conversions p {
   margin: 0; }
+.conversions span {
+  display: block;
+  min-height: 30px; }
 
 /*# sourceMappingURL=style.css.map */
