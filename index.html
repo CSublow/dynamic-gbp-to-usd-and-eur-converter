@@ -43,7 +43,7 @@
             var stringToConvert = $('#amount').val();
             
             //Display the value to convert in #amount-entered
-            $('#amount-entered').html(stringToConvert);
+            $('#amount-entered').html("&pound;" + stringToConvert);
             
             $.getJSON(
             	// NB: using Open Exchange Rates here, but you can use any source!
