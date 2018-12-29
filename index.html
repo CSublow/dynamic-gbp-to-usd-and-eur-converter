@@ -23,7 +23,7 @@
             <input type="submit" value="Submit"/>
         </form>
         
-        <p><span id="amount-entered"></span> in today's exchange rate is</p>
+        <p id="desc-p"><span id="amount-entered"></span> in today's exchange rate is</p>
         
         <div class="conversions">
             <!--<p>Amount to convert: <span id="ProductPrice">&pound;12.99</span></p>-->
@@ -44,6 +44,8 @@
             
             //Display the value to convert in #amount-entered
             $('#amount-entered').html("&pound;" + stringToConvert);
+            //Display #desc-p 
+            $('#desc-p').fadeIn();
             
             $.getJSON(
                 'https://openexchangerates.org/api/latest.json?app_id=49d329385faf437b9f7f75fbd5c5083d', //openexchangerates API
@@ -57,7 +59,7 @@
                         var fxSetup = {
                             rates : data.rates,
                             base : data.base
-                        }
+                        };
                     }
                     
                 //find all characters except £
@@ -66,7 +68,7 @@
                 numb = numb.join("");
                             
                 //convert the string numbers into actual data type numbers
-                var numb = Number(numb);
+                numb = Number(numb);
                 
                 //do the conversions
                 var conversionUS = fx.convert(numb, {from: 'GBP', to: 'USD'});
