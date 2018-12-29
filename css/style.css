@@ -2,6 +2,9 @@ h1 {
   margin: 15px auto;
   display: block; }
 
+body {
+  font-size: 1.5rem; }
+
 h1 {
   text-align: center; }
 
