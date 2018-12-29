@@ -28,4 +28,8 @@ input[type=submit] {
   .conversions #usd, .conversions #eur {
     display: none; }
 
+footer {
+  font-size: 1rem;
+  margin-bottom: 5px; }
+
 /*# sourceMappingURL=style.css.map */
