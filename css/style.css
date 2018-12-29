@@ -1,4 +1,4 @@
-h1 {
+h1, input[type=submit] {
   margin: 15px auto;
   display: block; }
 
@@ -16,6 +16,9 @@ form {
 
 label {
   display: block; }
+
+input[type=submit] {
+  margin-top: 5px; }
 
 .conversions {
   margin-top: 20px; }

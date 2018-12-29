@@ -19,6 +19,11 @@ label {
     display: block;
 }
 
+input[type=submit] {
+    @extend %force-center;
+    margin-top: 5px;
+}
+
 .conversions {
     margin-top: 20px;
     
