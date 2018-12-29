@@ -1,4 +1,4 @@
-# Dynamic Currency Converter
+# Dynamic GBP to USD and EUR Currency Converter
 
 This project utilises money.js and the API available from https://openexchangerates.org/ in order to convert a user-inputted amount in GBP to USD and EUR.
 
