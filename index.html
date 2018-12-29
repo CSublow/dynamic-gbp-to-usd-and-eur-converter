@@ -23,7 +23,7 @@
             <input type="submit" value="Submit"/>
         </form>
         
-        <p><span></span> in today's exchange rate is</p>
+        <p><span id="amount-entered"></span> in today's exchange rate is</p>
         
         <div class="conversions">
             <!--<p>Amount to convert: <span id="ProductPrice">&pound;12.99</span></p>-->
@@ -39,6 +39,12 @@
     <script type="text/javascript">
         // Load exchange rates data via AJAX:
         function convert() {
+            //get the value to convert
+            var stringToConvert = $('#amount').val();
+            
+            //Display the value to convert in #amount-entered
+            $('#amount-entered').html(stringToConvert);
+            
             $.getJSON(
             	// NB: using Open Exchange Rates here, but you can use any source!
                 'https://openexchangerates.org/api/latest.json?app_id=49d329385faf437b9f7f75fbd5c5083d',
@@ -54,8 +60,6 @@
                             base : data.base
                         }
                     }
-                //get the price of the product as a string
-                var stringToConvert = $('#amount').val();
                     
                 //find all characters except £
                 var numb = stringToConvert.match(/[^£]/g);
