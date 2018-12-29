@@ -2,12 +2,11 @@ h1 {
   margin: 15px auto;
   display: block; }
 
-main {
-  margin-top: 20px; }
-
-form span {
-  margin-right: 8px;
-  font-size: 1.1rem; }
+form {
+  margin: 20px 0; }
+  form span {
+    margin-right: 8px;
+    font-size: 1.1rem; }
 
 label {
   display: block; }
