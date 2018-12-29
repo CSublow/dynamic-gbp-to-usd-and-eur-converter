@@ -27,10 +27,8 @@
         
         <div class="conversions">
             <!--<p>Amount to convert: <span id="ProductPrice">&pound;12.99</span></p>-->
-            <p>USD:</p>
-            <span id="USFX"></span>
-            <p>EUR:</p>
-            <span id="EUFX"></span>
+            <p id="usd">USD: <span id="USFX"></span></p>
+            <p id="eur">EUR: <span id="EUFX"></span></p>
         </div>
     </main>
     
@@ -44,7 +42,7 @@
             
             //Display the value to convert in #amount-entered
             $('#amount-entered').html("&pound;" + stringToConvert);
-            //Display #desc-p 
+            //Display #desc-p
             $('#desc-p').fadeIn();
             
             $.getJSON(
@@ -62,24 +60,28 @@
                         };
                     }
                     
-                //find all characters except £
-                var numb = stringToConvert.match(/[^£]/g);
-                //join the numbers together
-                numb = numb.join("");
-                            
-                //convert the string numbers into actual data type numbers
-                numb = Number(numb);
-                
-                //do the conversions
-                var conversionUS = fx.convert(numb, {from: 'GBP', to: 'USD'});
-                var conversionEU = fx.convert(numb, {from: 'GBP', to: 'EUR'});
-                //round them to two decimal places
-                var roundedConversionUS = parseFloat(Math.round(conversionUS * 100) / 100).toFixed(2);
-                var roundedConversionEU = parseFloat(Math.round(conversionEU * 100) / 100).toFixed(2);
-                            
-                //print the conversion onto the page
-                document.getElementById('USFX').innerHTML = '$' + roundedConversionUS;
-                document.getElementById('EUFX').innerHTML = '&euro;' + roundedConversionEU;
+                    //find all characters except £
+                    var numb = stringToConvert.match(/[^£]/g);
+                    //join the numbers together
+                    numb = numb.join("");
+                                
+                    //convert the string numbers into actual data type numbers
+                    numb = Number(numb);
+                    
+                    //do the conversions
+                    var conversionUS = fx.convert(numb, {from: 'GBP', to: 'USD'});
+                    var conversionEU = fx.convert(numb, {from: 'GBP', to: 'EUR'});
+                    //round them to two decimal places
+                    var roundedConversionUS = parseFloat(Math.round(conversionUS * 100) / 100).toFixed(2);
+                    var roundedConversionEU = parseFloat(Math.round(conversionEU * 100) / 100).toFixed(2);
+                                
+                    //print the conversion onto the page
+                    document.getElementById('USFX').innerHTML = '$' + roundedConversionUS;
+                    document.getElementById('EUFX').innerHTML = '&euro;' + roundedConversionEU;
+                    
+                    //Display the conversion with animation
+                    $('#usd').fadeIn(800);
+                    $('#eur').fadeIn(800);
                 }
             );
         }

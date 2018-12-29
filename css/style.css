@@ -25,10 +25,7 @@ input[type=submit] {
 
 .conversions {
   margin-top: 20px; }
-  .conversions p {
-    margin: 0; }
-  .conversions span {
-    display: block;
-    min-height: 30px; }
+  .conversions #usd, .conversions #eur {
+    display: none; }
 
 /*# sourceMappingURL=style.css.map */

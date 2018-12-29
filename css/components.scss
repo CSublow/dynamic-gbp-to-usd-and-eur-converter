@@ -30,12 +30,14 @@ input[type=submit] {
 
 .conversions {
     margin-top: 20px;
-    
-    p {
-        margin: 0;
+    #usd, #eur {
+        display: none;
     }
-    span {
-        display: block;
-        min-height: 30px;
-    }
+    // p {
+    //     margin: 0;
+    // }
+    // span {
+    //     display: block;
+    //     min-height: 30px;
+    // }
 }
