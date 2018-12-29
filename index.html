@@ -46,8 +46,7 @@
             $('#amount-entered').html("&pound;" + stringToConvert);
             
             $.getJSON(
-            	// NB: using Open Exchange Rates here, but you can use any source!
-                'https://openexchangerates.org/api/latest.json?app_id=49d329385faf437b9f7f75fbd5c5083d',
+                'https://openexchangerates.org/api/latest.json?app_id=49d329385faf437b9f7f75fbd5c5083d', //openexchangerates API
                 function(data) {
                     // Check money.js has finished loading:
                     if ( typeof fx !== "undefined" && fx.rates ) {
